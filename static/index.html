@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A brief description of the webpage">
+    <meta name="keywords" content="communication, webcam, voicechat">
+    <meta name="author" content="Herman Ben Toledo">
+
+    <title>InstaVC</title>
+
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="/js/anime.min.js"></script>
+    <script src="/js/media.js"></script>
+    <script src="/js/ui.js"></script>
+    <script src="/js/network.js"></script>
+</head>
+
+<body>
+    <div id="nameChange">
+        <div id="nameChangeContainer" class="container center">
+            <input id="nameTextBox" class="center" placeholder="Input Name Here"></input>
+            <input id="nameChangeButton" class="center basicButton" type="button" value="Select Name"></input>
+        </div>
+    </div>
+
+    <div id="modal">
+        <div id="modalContainer" class="container center">
+            <div id="modalText" class="center">Hello world.</div>
+            <input id="modalButton" class="center basicButton" type="button" value="Okay"></input>
+        </div>
+    </div>
+
+    <div id="startContainer">
+        <div id="connectContainer" class="container center">
+            <input id="connectTextBox" class="center" placeholder="Call Code"></input>
+            <input id="connectButton" class="center basicButton" type="button" value="Connect"></input>
+        </div>
+
+        <div id="hostContainer" class="container center">
+            <input id="hostButton" class="center basicButton" type="button" value="Host Call"></input>
+            <div id="orText" class="center">Or</div>
+        </div>
+
+        <img id="titleImage" src="img/title.svg" draggable="false"></img>
+
+        <img class="webcamDecoration" style="left: 10vw; top: 70vh;" src="img/webcam-background.svg"></img>
+        <img class="webcamDecoration" style="left: 5vw; top: 30vh;" src="img/webcam-background.svg"></img>
+        <img class="webcamDecoration" style="left: 19vw; top: 0vh;" src="img/webcam-background.svg"></img>
+
+        <img class="webcamDecoration" style="left: 80vw; top: 70vh;" src="img/webcam-background.svg"></img>
+        <img class="webcamDecoration" style="left: 80vw; top: 30vh;" src="img/webcam-background.svg"></img>
+        <img class="webcamDecoration" style="left: 80vw; top: 0vh;" src="img/webcam-background.svg"></img>
+
+        <div id="tosNotice" class="center">
+            By joining or hosting a call you agree to the <a href="terms.html" target="_blank">terms of service</a>.
+        </div>
+    </div>
+    <div id="callContainer">
+        <div id="topContainer" class="container">
+            <img id="titleImageTopBar" src="img/title.svg" draggable="false"></img>
+            <div id="callCode" class="center topBar">bunnyrabbitfive</div>
+            <div id="currentTime" class="center topBar">12 : 15</div>
+            <div id="timeElapsed" class="center topBar">1 : 10</div>
+        </div>
+
+        <div id="bottomContainer" class="container">
+            <button id="muteButton" class="controlButton center">
+                <img src="img/mic.svg" class="controlButtonImage center" draggable="false"></img>
+                <div id="muteSlash" class="slash"></div>
+            </button>
+            <button id="videoButton" class="controlButton center">
+                <img src="img/webcam.svg" class="controlButtonImage center" draggable="false"></img>
+                <div id="videoSlash" class="slash"></div>
+            </button>
+            <button id="hangButton" class="controlButton center">
+                <img src="img/hang-up.svg" class="controlButtonImage center" draggable="false"></img>
+            </button>
+            <button id="messageButton" class="controlButton center">
+                <img src="img/message.svg" class="controlButtonImage center" draggable="false"></img>
+            </button>
+            <button id="nameButton" class="controlButton center">
+                <img src="img/quill.svg" class="controlButtonImage center" id="quillImage" draggable="false"></img>
+            </button>
+        </div>
+
+        <div id="camContainer">
+            <div id="callerContainer" class="videoContainer container center">
+                <div class="videoMutedContainer">
+                    <img src="img/mic.svg" class="videoMuted center" draggable="false"></img>
+                    <div id="muteSlashCaller" class="slashVideo center"></div>
+                </div>
+
+                <img src="./img/user.svg" class="userIcon center"></img>
+                <div id="callerHeader" class="videoHeader container">Jack Smith</div>
+                <video id="callerVideo" class="videoStream"></video>
+            </div>
+            <div id="calleeContainer" class="videoContainer container center">
+                <div class="videoMutedContainer">
+                    <img src="img/mic.svg" class="videoMuted center" draggable="false"></img>
+                    <div id="muteSlashCallee" class="slashVideo center"></div>
+                </div>
+
+                <img src="./img/user.svg" class="userIcon center"></img>
+                <div id="calleeHeader" class="videoHeader container">Herman Toledo</div>
+                <video id="calleeVideo" class="videoStream"></video>
+            </div>
+        </div>
+
+        <div id="messageContainer" class="container">
+            <div id="messageHeader" class="center container">Message Center</div>
+            <div id="messageDisclaimer" class="container">Messages are not saved or stored.</div>
+            <div id="messageTextContainer" class="center">
+                <button id="sendMessageButton">
+                    <img src="img/send.svg" class="controlButtonImage center" id="sendImage" draggable="false"></img>
+                </button>
+                <textarea id="messageInput" placeholder="Input message here." type="text"
+                    autocomplete="one-time-code"></textarea>
+            </div>
+            <div id="messageScroll"></div>
+            <button id="messageCloseButton">X</button>
+
+            <div id="messageCenter" class="container">
+                <div id="messageCenterContainer">
+                    <div id="messageInstance" class="message">
+                        <div class="messageStem center"></div>
+                        <div class="messageContent">Hello world</div>
+                        <div class="messageName">Herman Ben</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
